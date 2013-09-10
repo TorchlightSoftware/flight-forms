@@ -1,0 +1,19 @@
+{
+  "name": "flight-forms",
+  "version": "0.0.0",
+  "dependencies": {
+    "coffee-script": "*",
+    "sugar": "*",
+    "async": "*",
+    "connect": "2.3.4",
+    "jade": "*",
+    "jaded": "*"
+  },
+  "devDependencies": {
+    "should": "*",
+    "traffic": "*"
+  },
+  "scripts": {
+    "test": "mocha test/client/specs/*"
+  }
+}

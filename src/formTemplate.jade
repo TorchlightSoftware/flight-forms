@@ -1,0 +1,46 @@
+form.form-horizontal(id="#{name}")
+  if prompt
+    .form-heading #{prompt}
+
+  for field in fields
+    - field.defaultValue || (field.defaultValue = "")
+
+    .control-group(name="#{field.name}")
+      .control-label #{field.label}
+      .controls
+        case field.inputType
+
+          when 'text'
+            input(type="text", placeholder="#{field.defaultValue}", name="#{field.name}")
+
+          when 'password'
+            input(type="password", placeholder="#{field.defaultValue}", name="#{field.name}")
+
+          when 'selection'
+            select(name="#{field.name}")
+              each selection in field.selections
+                - var id = selection.id || selection.label
+                - var label = selection.label
+
+                if selection == field.defaultValue
+                  option(value="#{id || label}", selected="selected") #{label}
+                else
+                  option(value="#{id || label}") #{label}
+
+          when 'paragraph'
+            textarea(name='#{field.name}')
+
+          when 'static'
+            span.field(name='#{field.name}') #{field.value}
+
+          when 'button'
+            a.btn(href="#{field.href}", class="btn-#{field.btnStyle} #{field.classes}") #{field.value}
+
+          default
+            - console.log('Unrecognized field type:', field.inputType)
+
+        span.help-inline
+
+  if submit == 'group'
+    .controls
+      button.btn.btn-primary(type="submit") #{submitText}

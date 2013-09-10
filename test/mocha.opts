@@ -1,0 +1,6 @@
+--compilers coffee:coffee-script
+-r should
+-r coffee-script
+-R spec
+--ui bdd
+-t 10000

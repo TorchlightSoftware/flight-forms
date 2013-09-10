@@ -1,0 +1,20 @@
+#!/usr/bin/env coffee
+{join, basename} = require "path"
+fs = require 'fs'
+config = require join __dirname, "../app/config"
+
+# gather cmd line args
+task = process.argv[2]
+args = process.argv.slice(3)
+
+script = "scripts/#{task}"
+
+try
+  config.require(script).apply null, args
+
+catch err
+  console.log err.stack + '\n'
+  scripts = join __dirname, 'sources'
+  fs.readdir scripts, (err, files) ->
+    console.log "Available tasks:\n" + files.map((f) -> '  ' + basename f, '.coffee').join('\n')
+    process.exit 0

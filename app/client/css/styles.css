@@ -1,0 +1,10 @@
+#test-component {
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.form-heading {
+  margin-bottom: 1em;
+  margin-left: 3em;
+  font-size: 2em;
+}

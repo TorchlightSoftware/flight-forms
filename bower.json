@@ -1,0 +1,28 @@
+{
+  "name": "flight-forms",
+  "version": "0.0.0",
+  "main": "lib/forms.js",
+  "dependencies": {
+    "flight": "~1.1.0"
+  },
+  "devDependencies": {
+    "jasmine-flight": "*",
+    "jasmine-jquery": "*"
+  },
+  "ignore": [
+    ".gitignore",
+    ".gitattributes",
+    ".travis.yml",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "bower_components",
+    "node_modules",
+    "src",
+    "tmp",
+    "app",
+    "data",
+    "test",
+    "package.json",
+    "karma.conf.js"
+  ]
+}

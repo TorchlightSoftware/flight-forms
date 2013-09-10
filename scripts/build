@@ -1,0 +1,43 @@
+#!/bin/bash
+current=$(dirname $0)
+root=$current/..
+public=$root/app/public
+client=$root/app/client
+src=$root/src
+lib=$root/lib
+bower=$root/bower_components
+
+rm -rf   $public
+mkdir -p $public/templates
+mkdir -p $public/js/vendor
+mkdir -p $public/css
+
+rm -rf $lib
+mkdir $lib
+
+# Templates
+$root/node_modules/.bin/jaded -a "jade" -i $src -o $lib
+
+# Client Config
+$root/scripts/run buildClientConfig > $public/js/config.js
+
+# CoffeeScript
+coffee -o $public/js/ -c $client/js/
+coffee -o $lib/ -c $src/
+
+# TODO - process that minifies all js
+# uglifyjs -nc --unsafe -mt -o $public/js/main.min.js $public/js/main.js
+
+# Jade
+cp $root/node_modules/jade/runtime.js $client/js/vendor/jade-runtime.js
+
+# Non-built files
+cp $client/*.html $public
+cp -R $client/js/vendor/* $public/js/vendor
+cp -R $client/css/* $public/css
+cp -R $bower/flight $public/js/vendor/flight
+
+# copy lib files to sample app
+cp -R $lib $public/js/vendor/flight-forms
+
+echo "Build completed!"
