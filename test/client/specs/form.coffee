@@ -19,6 +19,10 @@ describe 'forms', ->
       t.drive [
         t.waitFor componentDiv, patience
         #t.injectComponent 'components/flight-forms', componentDiv, options
+
         t.waitForText 'Please enter your name:', patience
+        t.fill "#enterName input[name=firstName]", "Bob"
+        t.fill "#enterName input[name=lastName]", "Smith"
+        t.click "#enterName button[type=submit]"
 
       ], done
