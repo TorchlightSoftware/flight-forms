@@ -3,6 +3,7 @@ current=$(dirname $0)
 root=$current/..
 public=$root/app/public
 client=$root/app/client
+data=$root/data
 src=$root/src
 lib=$root/lib
 bower=$root/bower_components
@@ -10,10 +11,11 @@ bower=$root/bower_components
 rm -rf   $public
 mkdir -p $public/templates
 mkdir -p $public/js/vendor
+mkdir -p $public/js/data
 mkdir -p $public/css
 
 rm -rf $lib
-mkdir $lib
+mkdir -p $lib/data
 
 # Templates
 $root/node_modules/.bin/jaded -a "jade" -i $src -o $lib
@@ -24,6 +26,8 @@ $root/scripts/run buildClientConfig > $public/js/config.js
 # CoffeeScript
 coffee -o $public/js/ -c $client/js/
 coffee -o $lib/ -c $src/
+coffee -o $public/js/data/ -c $data/
+coffee -o $lib/data/ -c $data/
 
 # TODO - process that minifies all js
 # uglifyjs -nc --unsafe -mt -o $public/js/main.min.js $public/js/main.js

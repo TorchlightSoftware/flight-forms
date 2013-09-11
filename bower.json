@@ -1,9 +1,10 @@
 {
   "name": "flight-forms",
   "version": "0.0.0",
-  "main": "lib/forms.js",
+  "main": "lib/form.js",
   "dependencies": {
-    "flight": "~1.1.0"
+    "flight": "~1.1.0",
+    "lodash": "~1.3.1"
   },
   "devDependencies": {
     "jasmine-flight": "*",

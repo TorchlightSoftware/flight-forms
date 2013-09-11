@@ -1,6 +1,11 @@
 {
   "name": "flight-forms",
-  "version": "0.0.0",
+  "description": "Data driven form generator with built in validation.",
+  "version": "0.0.1",
+  "homepage":"http://github.com/TorchlightSoftware/flight-forms",
+  "repository":"git://github.com/TorchlightSoftware/flight-forms.git",
+  "author": "Torchlight Software <info@torchlightsoftware.com> (http://torchlightsoftware.com/)",
+  "repository": "",
   "dependencies": {
     "coffee-script": "*",
     "sugar": "*",
@@ -10,8 +15,15 @@
     "jaded": "*"
   },
   "devDependencies": {
-    "should": "*",
-    "traffic": "*"
+    "karma": "~0.10.0",
+    "karma-jasmine": "~0.1.0",
+    "karma-requirejs": "~0.1.0",
+    "karma-chrome-launcher": "~0.1.0",
+    "karma-ie-launcher": "~0.1.1",
+    "karma-firefox-launcher": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-safari-launcher": "~0.1.1",
+    "karma-coffee-preprocessor": "~0.1.0"
   },
   "scripts": {
     "test": "mocha test/client/specs/*"

@@ -28,7 +28,7 @@
     ],
     map: {
       "*": {
-        "flight/component": "js/vendor/flight/lib/component"
+        "flight": "js/vendor/flight"
       }
     }
   });

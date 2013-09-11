@@ -1,9 +1,9 @@
-define ["flight/component", "./formTemplate", "./validateField", "./notifyInline", "./util"],
-  (defineComponent, formTemplate, validateField, notifyInline, util) ->
+define ["flight/lib/component", "./formTemplate", "./validateField", "./notifyInline", "./util"],
+  (defineComponent, formTemplate, validateField, notifyInline, {getType, random, formToHash}) ->
 
     form = ->
       @defaultAttrs
-        name: util.random()
+        name: random()
         submit: "group"
         submitText: "Send"
         placement: "#content"
@@ -26,7 +26,6 @@ define ["flight/component", "./formTemplate", "./validateField", "./notifyInline
           return unless field.required or field.validation
 
           {name} = field
-          console.log "adding validation to #{name}"
 
           # trigger validation on linked fields
           if field.linked and getType(field.linked) is "Array"
@@ -37,9 +36,11 @@ define ["flight/component", "./formTemplate", "./validateField", "./notifyInline
           # trigger validation
           node.find(".controls [name=#{name}]").change ->
             val = $(@).val()
-            console.log {field, val}
             error = validateField field, val
             notifyInline node, name, error
+
+        fields = @attr.fields
+        receiver = @attr.receiver
 
         # wire up submit
         @$node.find("##{@attr.name}").submit (evt) ->
@@ -49,7 +50,8 @@ define ["flight/component", "./formTemplate", "./validateField", "./notifyInline
 
           # perform validations
           valid = true
-          for field in validatedFields
+          for field in fields
+            return unless field.required or field.validation
             error = validateField field, formParams[field.name]
             notifyInline node, field.name, error
             valid = false if error

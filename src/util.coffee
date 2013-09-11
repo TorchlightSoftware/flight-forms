@@ -72,7 +72,7 @@ define ->
       hash = $(form).serializeArray().reduce toObj, {}
 
       # group any related fields into arrays
-      for field in hash.keys()
+      for field in Object.keys(hash)
         m = field.match /([A-z]+)-[0-9]+/
         if m
           arrayName = m[1]

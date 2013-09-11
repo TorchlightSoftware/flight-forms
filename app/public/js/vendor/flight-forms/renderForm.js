@@ -9,7 +9,6 @@
         options = {};
       }
       receiver = options.receiver, fields = options.fields;
-      console.log(fields);
       if (!(fields && fields.length > 0)) {
         console.log({
           message: "Called renderForm with no fields.",

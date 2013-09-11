@@ -1,6 +1,5 @@
 define ->
   (node, fieldName, message) ->
-    console.log {node}
     group = node.find(".control-group[name=#{fieldName}]")
     help = node.find(".control-group[name=#{fieldName}] span.help-inline")
 

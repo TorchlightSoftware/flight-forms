@@ -1,4 +1,4 @@
-define ["flight/component"], (defineComponent) ->
+define ["flight/lib/component"], (defineComponent) ->
   list = ->
     @defaultAttrs {}
     @after "initialize", ->

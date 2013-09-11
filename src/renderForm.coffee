@@ -4,8 +4,6 @@ define ["./formTemplate", "./validateField", "./notifyInline", "./util"],
     (options={}) ->
       {receiver, fields} = options
 
-      console.log fields
-
       # spit out an error if there's no fields
       unless fields and fields.length > 0
         console.log

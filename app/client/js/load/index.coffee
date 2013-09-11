@@ -11,6 +11,6 @@ require.config
   ]
 
   map: "*":
-      {"flight/component": "js/vendor/flight/lib/component"}
+      {"flight": "js/vendor/flight"}
 
 require ['load/shim', 'load/main']
