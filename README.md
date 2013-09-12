@@ -1,6 +1,6 @@
 # flight-forms
 
-[![Build Status](https://secure.travis-ci.org/<username>/flight-forms.png)](http://travis-ci.org/<username>/flight-forms)
+[![Build Status](https://secure.travis-ci.org/TorchlightSoftware/flight-forms.png)](http://travis-ci.org/<username>/flight-forms)
 
 A [Flight](https://github.com/flightjs/flight) component for rendering forms and directing the result to RPC/Ajax or any processor function.
 
