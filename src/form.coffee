@@ -30,8 +30,8 @@ define ["flight/lib/component", "./formTemplate", "./validateField", "./notifyIn
           # trigger validation on linked fields
           if field.linked and getType(field.linked) is "Array"
             for linked in field.linked
-              @$node.find(".controls [name=#{linked}]").change =>
-                @$node.find(".controls [name=#{name}]").change()
+              node.find(".controls [name=#{linked}]").change =>
+                node.find(".controls [name=#{name}]").change()
 
           # trigger validation
           node.find(".controls [name=#{name}]").change ->
@@ -50,8 +50,7 @@ define ["flight/lib/component", "./formTemplate", "./validateField", "./notifyIn
 
           # perform validations
           valid = true
-          for field in fields
-            return unless field.required or field.validation
+          for field in fields when field.required or field.validation
             error = validateField field, formParams[field.name]
             notifyInline node, field.name, error
             valid = false if error
